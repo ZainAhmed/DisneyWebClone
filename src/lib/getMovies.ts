@@ -49,7 +49,6 @@ export async function getDiscoverMovies(id?: string, keywords?: string) {
 
 export async function getSearchedMovies(term: string) {
   const url = new URL(`${baseURL}/search/movie`);
-
   url.searchParams.set("query", term);
   return await fetchFromTMDB(url);
 }
