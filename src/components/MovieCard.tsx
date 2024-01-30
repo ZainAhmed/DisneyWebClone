@@ -1,5 +1,5 @@
+import { Movie } from "@/Types/ComponentTypes";
 import getImagePath from "@/lib/getImagePath";
-import { Movie } from "@/typings";
 import Image from "next/image";
 
 function MovieCard({ movie }: { movie: Movie }) {

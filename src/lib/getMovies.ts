@@ -5,9 +5,9 @@ const moviesURL = `${baseURL}/movie`;
 async function fetchFromTMDB(url: URL, cacheTime?: number) {
   url.searchParams.set("include_adult", "false");
   url.searchParams.set("include_video", "false");
-  url.searchParams.set("sort_by", "polularity.desc");
   url.searchParams.set("language", "en-US");
   url.searchParams.set("page", "1");
+  url.searchParams.set("sort_by", "popularity.desc");
 
   const options: RequestInit = {
     method: "GET",
@@ -44,7 +44,6 @@ export async function getDiscoverMovies(id?: string, keywords?: string) {
 
   keywords && url.searchParams.set("with_keywords", keywords);
   id && url.searchParams.set("with_genres", id);
-
   return await fetchFromTMDB(url);
 }
 
