@@ -35,7 +35,7 @@ async function GenreDropdown() {
         <DropdownMenuLabel>Select a Genre</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {data.genres.map((genre) => (
-          <DropdownMenuItem key={genre.id}>
+          <DropdownMenuItem key={genre.id} asChild>
             <Link href={`/genre/${genre.id}?genre=${genre.name}`}>
               {genre.name}
             </Link>
