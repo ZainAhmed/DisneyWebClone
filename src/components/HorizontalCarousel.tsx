@@ -19,7 +19,7 @@ const HorizontalCarousel: React.FC<PropType> = (props) => {
   const [emblaRef] = useEmblaCarousel(options);
 
   return (
-    <div className="z-50">
+    <div className="z-10 overflow-hidden">
       <h2 className="text-xl font-bold px-10 py-2">{title}</h2>
       <div>
         <div ref={emblaRef}>
