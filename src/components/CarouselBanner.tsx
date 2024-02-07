@@ -17,12 +17,15 @@ function CarouselBanner({ movies }: PropsType) {
   ]);
   return (
     <div
-      className="overflow-hidden relative cursor-pointer mt-[60px] py-2 xl:h-[400px] hover:border-white"
+      className="overflow-hidden relative cursor-pointer mt-[60px] py-2 xl:h-[400px]"
       ref={emblaRef}
     >
       <div className="flex">
         {movies.map((movie) => (
-          <div key={movie.id} className="flex-[0_0_95%] min-w-0 relative">
+          <div
+            key={movie.id}
+            className="flex-[0_0_95%] min-w-0 relative hover:border-4 border-white"
+          >
             <Image
               src={getImagePath(movie.backdrop_path, true)}
               alt=""

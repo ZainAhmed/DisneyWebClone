@@ -1,17 +1,15 @@
 "use client";
-import { Movie } from "@/Types/ComponentTypes";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import React from "react";
-import MovieCard from "./MovieCard";
 
 type PropType = {
-  movies: Movie[];
+  CarouselCard: JSX.Element[];
   title?: string;
 };
 
 const HorizontalCarousel: React.FC<PropType> = (props) => {
-  const { movies, title } = props;
+  const { CarouselCard, title } = props;
   const options: EmblaOptionsType = {
     dragFree: true,
     containScroll: "trimSnaps",
@@ -24,9 +22,7 @@ const HorizontalCarousel: React.FC<PropType> = (props) => {
       <div>
         <div ref={emblaRef}>
           <div className="flex space-x-4 px-5 lg:px-10 py-5 ">
-            {movies.map((movie, index) => (
-              <MovieCard movie={movie} key={index} />
-            ))}
+            {CarouselCard.map((element) => element)}
           </div>
         </div>
       </div>
