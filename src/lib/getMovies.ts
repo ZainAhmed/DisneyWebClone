@@ -41,9 +41,15 @@ export async function getPopularMovies() {
 
 export async function getDiscoverMovies(id?: string, keywords?: string) {
   const url = new URL(`${baseURL}/discover/movie`);
+  if (id !== "discover") {
+    keywords && url.searchParams.set("with_keywords", keywords);
+    id && url.searchParams.set("with_genres", id);
+  }
+  return await fetchFromTMDB(url);
+}
 
-  keywords && url.searchParams.set("with_keywords", keywords);
-  id && url.searchParams.set("with_genres", id);
+export async function getMovieDetails(id: string) {
+  const url = new URL(`${baseURL}/movie/${id}`);
   return await fetchFromTMDB(url);
 }
 

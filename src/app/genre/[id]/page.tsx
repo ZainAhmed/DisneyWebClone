@@ -3,10 +3,10 @@ import { getDiscoverMovies } from "@/lib/getMovies";
 
 type PropsType = {
   params: {
-    id: string;
+    id?: string;
   };
   searchParams: {
-    genre: string;
+    genre?: string;
   };
 };
 async function GenrePage({ params, searchParams }: PropsType) {

@@ -14,6 +14,7 @@ const HorizontalCarousel: React.FC<PropType> = (props) => {
     dragFree: true,
     containScroll: "trimSnaps",
   };
+
   const [emblaRef] = useEmblaCarousel(options);
 
   return (

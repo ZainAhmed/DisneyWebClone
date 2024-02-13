@@ -1,13 +1,8 @@
 export const navMenus = [
   {
-    href: "/home",
+    href: "/",
     src: "/images/home-icon.svg",
     title: "HOME",
-  },
-  {
-    href: "/home",
-    src: "/images/watchlist-icon.svg",
-    title: "WATCHLIST",
   },
   {
     href: "/home",
