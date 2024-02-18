@@ -28,7 +28,6 @@ async function SearchPage({ params }: PropsType) {
   const termToUse = decodeURI(term);
   const movies = await getSearchedMovies(termToUse);
   const popularMovies = await getPopularMovies();
-  console.log(movies);
   return (
     <div className="max-w-7xl mx-auto">
       <div className="flex flex-col space-y-4 mt-32 xl:mt-42">

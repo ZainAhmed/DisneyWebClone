@@ -1,8 +1,9 @@
-import { Movie } from "@/Types/ComponentTypes";
+import { Movie, TvShow } from "@/Types/ComponentTypes";
+import { isTvShow } from "@/lib/utils";
 import MovieCard from "./MovieCard";
 
 type PropsType = {
-  movies: Movie[];
+  movies: Movie[] | TvShow[];
   title?: string;
 };
 function VerticalCarousel({ movies, title }: PropsType) {
@@ -21,7 +22,10 @@ function VerticalCarousel({ movies, title }: PropsType) {
                 <MovieCard key={movie.id} movie={movie} />
                 <div className="max-w-2xl">
                   <p className="font-bold">
-                    {movie.title}({movie.release_date.split("-")[0]})
+                    {isTvShow(movie) ? `${movie.name} ` : `${movie.title} `}(
+                    {movie.release_date?.split("-")[0] ||
+                      movie.first_air_date?.split("-")[0]}
+                    )
                   </p>
                   <hr className="mb-3" />
                   <p>{movie.overview}</p>

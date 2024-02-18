@@ -5,17 +5,17 @@ export const navMenus = [
     title: "HOME",
   },
   {
-    href: "/home",
+    href: "/originals",
     src: "/images/original-icon.svg",
     title: "ORIGINALS",
   },
   {
-    href: "/home",
+    href: "/movies",
     src: "/images/movie-icon.svg",
     title: "MOVIES",
   },
   {
-    href: "/home",
+    href: "/series",
     src: "/images/series-icon.svg",
     title: "SERIES",
   },

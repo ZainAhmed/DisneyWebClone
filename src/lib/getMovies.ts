@@ -58,3 +58,8 @@ export async function getSearchedMovies(term: string) {
   url.searchParams.set("query", term);
   return await fetchFromTMDB(url);
 }
+
+export async function getSeries() {
+  const url = new URL(`${baseURL}/discover/tv`);
+  return await fetchFromTMDB(url);
+}
