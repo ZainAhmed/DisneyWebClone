@@ -1,7 +1,7 @@
-import { Movie } from "@/Types/ComponentTypes";
+import { Movie, TvShow } from "@/Types/ComponentTypes";
 import HorizontalCarousel from "@/components/HorizontalCarousel";
 import VerticalCarousel from "@/components/VerticalCarousel";
-import { getPopularMovies, getSearchedMovies } from "@/lib/getMovies";
+import { getPopularMovies, getSearchedMovies } from "@/lib/api";
 import { notFound } from "next/navigation";
 import React, { Suspense } from "react";
 type PropsType = {
@@ -12,10 +12,10 @@ type PropsType = {
 const MovieCard = React.lazy(() => {
   return import("@/components/MovieCard");
 });
-export const getMovieCards = (input: Movie[]) => {
+export const getMovieCards = (input: Movie[] | TvShow[]) => {
   return input.map((movie, index) => (
     <Suspense fallback={"Loading..."} key={index}>
-      <MovieCard movie={movie} />
+      <MovieCard video={movie} videoType="movie" />
     </Suspense>
   ));
 };
@@ -32,7 +32,7 @@ async function SearchPage({ params }: PropsType) {
     <div className="max-w-7xl mx-auto">
       <div className="flex flex-col space-y-4 mt-32 xl:mt-42">
         <h1 className="text-6xl font-bold px-10">Results for {termToUse}</h1>
-        <VerticalCarousel title="Movies" movies={movies} />
+        <VerticalCarousel title="Movies" movies={movies} videoType="movie" />
         <HorizontalCarousel
           title="You may also like"
           CarouselCard={getMovieCards(popularMovies)}

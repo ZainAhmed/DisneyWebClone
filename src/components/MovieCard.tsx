@@ -4,24 +4,27 @@ import getImagePath from "@/lib/getImagePath";
 import { isTvShow } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-
-function MovieCard({ movie }: { movie: Movie | TvShow }) {
+type PropsType = {
+  video: Movie | TvShow;
+  videoType: string;
+};
+function MovieCard({ video, videoType }: PropsType) {
   return (
-    <Link href={`/details/${movie.id}`}>
+    <Link href={`/details/${videoType}/${video.id}`}>
       <div className="flex-shrink-0 relative cursor-pointer transform hover:scale-105 transition duration-200 ease-out hover:drop-shadow-lg">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-200/0 via-gray-900/10 to-gray-300 dark:to-[#1A1C29]/80 z-10" />
         <p className="absolute z-20 bottom-5 left-5">
-          {isTvShow(movie) ? movie.name : movie.title}
+          {isTvShow(video) ? video.name : video.title}
         </p>
-        {(movie.backdrop_path || movie.poster_path) && (
+        {(video.backdrop_path || video.poster_path) && (
           <Image
             className="w-fit lg:min-w-[400px] h-56 object-cover object-center shadow-md shadow-gray-900 drop-shadow-xl
            rounded-sm"
-            src={getImagePath(movie.backdrop_path || movie.poster_path)}
-            alt={movie.title || "default"}
+            src={getImagePath(video.backdrop_path || video.poster_path)}
+            alt={video.title || "default"}
             width={1920}
             height={1080}
-            key={movie.id}
+            key={video.id}
           />
         )}
       </div>

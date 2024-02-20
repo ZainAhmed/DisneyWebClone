@@ -1,4 +1,4 @@
-import { getDiscoverMovies } from "@/lib/getMovies";
+import { getDiscoverMovies } from "@/lib/api";
 import CarouselBanner from "./CarouselBanner";
 
 type PropsType = {
