@@ -3,8 +3,11 @@ import {
   SearchResults,
   TvShowDetails,
 } from "@/Types/ComponentTypes";
+
 const baseURL = "https://api.themoviedb.org/3";
 const moviesURL = `${baseURL}/movie`;
+
+const apiBaseUrl = "http://localhost:3000/apis";
 
 async function fetchFromTMDB(url: URL) {
   url.searchParams.set("include_adult", "false");
@@ -53,13 +56,8 @@ export async function getPopularMovies() {
 }
 
 export async function getDiscoverMovies(id?: string, keywords?: string) {
-  const url = new URL(`${baseURL}/discover/movie`);
-  if (id !== "discover") {
-    keywords && url.searchParams.set("with_keywords", keywords);
-    id && url.searchParams.set("with_genres", id);
-  }
-  const reponse = await fetchFromTMDB(url);
-  return getVideoListResults(reponse);
+  const res = await fetch(`${apiBaseUrl}/movies/discover`);
+  return getVideoListResults(res);
 }
 
 export async function getSearchedMovies(term: string) {
