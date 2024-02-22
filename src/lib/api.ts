@@ -38,21 +38,18 @@ async function getVideoDetail(response: Response) {
 }
 
 export async function getUpComingMovies() {
-  const url = new URL(`${moviesURL}/upcoming`);
-  const reponse = await fetchFromTMDB(url);
-  return getVideoListResults(reponse);
+  const res = await fetch(`${apiBaseUrl}/movies/upcoming`);
+  return getVideoListResults(res);
 }
 
 export async function getTopRatedMovies() {
-  const url = new URL(`${moviesURL}/top_rated`);
-  const reponse = await fetchFromTMDB(url);
-  return getVideoListResults(reponse);
+  const res = await fetch(`${apiBaseUrl}/movies/top_rated`);
+  return getVideoListResults(res);
 }
 
 export async function getPopularMovies() {
-  const url = new URL(`${moviesURL}/popular`);
-  const reponse = await fetchFromTMDB(url);
-  return getVideoListResults(reponse);
+  const res = await fetch(`${apiBaseUrl}/movies/popular`);
+  return getVideoListResults(res);
 }
 
 export async function getDiscoverMovies(id?: string, keywords?: string) {
