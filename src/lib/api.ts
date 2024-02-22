@@ -62,24 +62,20 @@ export async function getSearchedMovies(term: string) {
   return getVideoListResults(res);
 }
 
-// export async function getSeries() {
-//   const url = new URL(`${baseURL}/discover/tv`);
-//   const reponse = await fetchFromTMDB(url);
-//   return getVideoListResults(reponse);
-// }
+export async function getSeries() {
+  const res = await fetch(`${apiBaseUrl}/tv/discover`);
+  return getVideoListResults(res);
+}
 
-// export async function getMovieDetails(id: string) {
-//   const url = new URL(`${baseURL}/movie/${id}`);
-//   const reponse = await fetchFromTMDB(url);
-//   return getVideoDetail(reponse);
-// }
+export async function getMovieDetails(id: string) {
+  const res = await fetch(`${apiBaseUrl}/movies/details/${id}`);
+  return getVideoDetail(res);
+}
 
-// export async function getTvShowDetails(id: string) {
-//   const url = new URL(`${baseURL}/tv/${id}`);
-
-//   const reponse = await fetchFromTMDB(url);
-//   return getVideoDetail(reponse);
-// }
+export async function getTvShowDetails(id: string) {
+  const res = await fetch(`${apiBaseUrl}/tv/details/${id}`);
+  return getVideoDetail(res);
+}
 
 // export async function getMovieImages(id: string) {
 //   const url = new URL(`${baseURL}/movie/${id}/images`);
