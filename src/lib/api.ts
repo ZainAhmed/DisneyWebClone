@@ -58,32 +58,30 @@ export async function getDiscoverMovies(id?: string, keywords?: string) {
 }
 
 export async function getSearchedMovies(term: string) {
-  const url = new URL(`${baseURL}/search/movie`);
-  url.searchParams.set("query", term);
-  const reponse = await fetchFromTMDB(url);
-  return getVideoListResults(reponse);
+  const res = await fetch(`${apiBaseUrl}/movies/search/${term}`);
+  return getVideoListResults(res);
 }
 
-export async function getSeries() {
-  const url = new URL(`${baseURL}/discover/tv`);
-  const reponse = await fetchFromTMDB(url);
-  return getVideoListResults(reponse);
-}
+// export async function getSeries() {
+//   const url = new URL(`${baseURL}/discover/tv`);
+//   const reponse = await fetchFromTMDB(url);
+//   return getVideoListResults(reponse);
+// }
 
-export async function getMovieDetails(id: string) {
-  const url = new URL(`${baseURL}/movie/${id}`);
-  const reponse = await fetchFromTMDB(url);
-  return getVideoDetail(reponse);
-}
+// export async function getMovieDetails(id: string) {
+//   const url = new URL(`${baseURL}/movie/${id}`);
+//   const reponse = await fetchFromTMDB(url);
+//   return getVideoDetail(reponse);
+// }
 
-export async function getTvShowDetails(id: string) {
-  const url = new URL(`${baseURL}/tv/${id}`);
+// export async function getTvShowDetails(id: string) {
+//   const url = new URL(`${baseURL}/tv/${id}`);
 
-  const reponse = await fetchFromTMDB(url);
-  return getVideoDetail(reponse);
-}
+//   const reponse = await fetchFromTMDB(url);
+//   return getVideoDetail(reponse);
+// }
 
-export async function getMovieImages(id: string) {
-  const url = new URL(`${baseURL}/movie/${id}/images`);
-  const reponse = await fetchFromTMDB(url);
-}
+// export async function getMovieImages(id: string) {
+//   const url = new URL(`${baseURL}/movie/${id}/images`);
+//   const reponse = await fetchFromTMDB(url);
+// }
