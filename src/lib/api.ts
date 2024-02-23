@@ -61,11 +61,11 @@ export async function getTvShowDetails(id: string) {
 }
 
 export async function getMovieImages(id: string) {
-  const res = await fetch(`${apiBaseUrl}/movies/details/${id}`);
+  const res = await fetch(`${apiBaseUrl}/movies/Images/${id}`);
   return getVideoImageDetail(res);
 }
 
 export async function getTvImages(id: string) {
-  const res = await fetch(`${apiBaseUrl}/tv/details/${id}`);
+  const res = await fetch(`${apiBaseUrl}/tv/Images/${id}`);
   return getVideoImageDetail(res);
 }

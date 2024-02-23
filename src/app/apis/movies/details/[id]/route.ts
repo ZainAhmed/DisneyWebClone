@@ -5,6 +5,6 @@ type PropsType = {
 };
 export async function GET(request: Request, { params }: PropsType) {
   let url = new URL(`${baseURL}/movie/${params.id}`);
-  const response = await fetchFromTMDB(url, true);
+  const response = await fetchFromTMDB(url, false);
   return NextResponse.json(response);
 }
