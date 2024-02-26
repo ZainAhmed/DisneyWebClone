@@ -1,11 +1,15 @@
+import VideoDetailsComponent from "@/components/VideoDetails/VideoDetailsComponent";
 import {
   getMovieDetails,
   getMovieImages,
   getTvImages,
   getTvShowDetails,
 } from "@/lib/api";
-import getImagePath from "@/lib/getImagePath";
-import Image from "next/image";
+import {
+  HydrationBoundary,
+  QueryClient,
+  dehydrate,
+} from "@tanstack/react-query";
 
 type PageProps = {
   params: {
@@ -13,41 +17,39 @@ type PageProps = {
     id: string;
   };
 };
-async function Details({ params }: PageProps) {
+async function DetailsPage({ params }: PageProps) {
   const { videoType, id } = params;
-  let detailData;
-  let imageData;
+
+  const queryClient = new QueryClient();
   switch (videoType) {
     case "tv":
-      detailData = await getTvShowDetails(id);
-      imageData = await getTvImages(id);
+      await queryClient.prefetchQuery({
+        queryKey: ["getTvShowDetails", id],
+        queryFn: () => getTvShowDetails(id),
+      });
+      await queryClient.prefetchQuery({
+        queryKey: ["getTvImages", id],
+        queryFn: () => getTvImages(id),
+      });
       break;
     case "movie":
-      detailData = await getMovieDetails(id);
-      imageData = await getMovieImages(id);
+      await queryClient.prefetchQuery({
+        queryKey: ["getMovieDetails", id],
+        queryFn: () => getMovieDetails(id),
+      });
+      await queryClient.prefetchQuery({
+        queryKey: ["getMovieImages", id],
+        queryFn: () => getMovieImages(id),
+      });
       break;
     default:
       break;
   }
-  console.log(imageData?.backdrops[0].width, imageData?.backdrops[0].height);
   return (
-    <div className="relative min-h-[calc(100vh-250px)] overflow-x-hidden block top-[72px] py-0 px-[calc(3.5vw + 5px)]">
-      <div className="fixed left-0 right-0 top-0 opacity-80 z-[-1]">
-        <Image
-          src={getImagePath(
-            imageData?.backdrops[0].file_path ||
-              detailData?.poster_path ||
-              detailData?.backdrop_path
-          )}
-          alt=""
-          fill={true}
-          // quality={100}
-          // className="!relative"
-          style={{ marginTop: "100px" }}
-        />
-      </div>
-    </div>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <VideoDetailsComponent id={id} videoType={videoType} />
+    </HydrationBoundary>
   );
 }
 
-export default Details;
+export default DetailsPage;

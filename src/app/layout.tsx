@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import ReactQueryProvider from "@/components/Providers/ReactQueryProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -25,8 +26,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
+          <ReactQueryProvider>
+            <Header />
+            {children}
+          </ReactQueryProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -12,10 +12,6 @@ async function getVideoListResults(response: Response) {
   return data.results;
 }
 
-async function getVideoDetail(response: Response) {
-  return (await response.json()) as TvShowDetails | MovieDetails;
-}
-
 async function getVideoImageDetail(response: Response) {
   return (await response.json()) as VideoImages;
 }
@@ -52,12 +48,12 @@ export async function getSeries() {
 
 export async function getMovieDetails(id: string) {
   const res = await fetch(`${apiBaseUrl}/movies/details/${id}`);
-  return getVideoDetail(res);
+  return (await res.json()) as MovieDetails;
 }
 
 export async function getTvShowDetails(id: string) {
   const res = await fetch(`${apiBaseUrl}/tv/details/${id}`);
-  return getVideoDetail(res);
+  return (await res.json()) as TvShowDetails;
 }
 
 export async function getMovieImages(id: string) {
