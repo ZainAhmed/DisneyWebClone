@@ -31,7 +31,7 @@ export async function getPopularMovies() {
   return getVideoListResults(res);
 }
 
-export async function getDiscoverMovies(id?: string, keywords?: string) {
+export async function getDiscoverMovies() {
   const res = await fetch(`${apiBaseUrl}/movies/discover`);
   return getVideoListResults(res);
 }
