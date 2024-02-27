@@ -6,9 +6,11 @@ import useHomePageMovies from "@/hooks/useHomePageMovies";
 import React, { Suspense } from "react";
 import CarouselBanner from "../CarouselBanner";
 import LoadingSpinner from "../LoadingSpinner";
+
 const MovieCard = React.lazy(() => {
   return import("@/components/MovieCard");
 });
+
 export const getMovieCards = (input: Movie[] | TvShow[]) => {
   return input.map((movie, index) => (
     <MovieCard key={index} video={movie} videoType="movie" />
@@ -34,7 +36,6 @@ export default function HomeComponent() {
           CarouselCard={getMovieCards(topRatedMovies)}
           title="Top Rated"
         />
-
         <HorizontalCarousel
           CarouselCard={getMovieCards(popularMovies)}
           title="Popular"

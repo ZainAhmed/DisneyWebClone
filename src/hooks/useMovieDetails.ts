@@ -8,7 +8,7 @@ const movieEndpoints = (id: string) => {
   ];
 };
 
-const useMovieData = (id: string, videoType: string) => {
+const useMovieDetails = (id: string, videoType: string) => {
   return useSuspenseQueries({
     queries: movieEndpoints(id).map((movieData) => {
       return {
@@ -20,4 +20,4 @@ const useMovieData = (id: string, videoType: string) => {
   });
 };
 
-export default useMovieData;
+export default useMovieDetails;

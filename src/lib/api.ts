@@ -12,6 +12,10 @@ async function getVideoListResults(response: Response) {
   return data.results;
 }
 
+async function getVideoDetail(response: Response) {
+  return (await response.json()) as TvShowDetails | MovieDetails;
+}
+
 async function getVideoImageDetail(response: Response) {
   return (await response.json()) as VideoImages;
 }
@@ -31,8 +35,13 @@ export async function getPopularMovies() {
   return getVideoListResults(res);
 }
 
-export async function getDiscoverMovies() {
+export async function getDiscoverMovies(id?: string, keywords?: string) {
   const res = await fetch(`${apiBaseUrl}/movies/discover`);
+  return getVideoListResults(res);
+}
+
+export async function getDiscoverbyGeneres(id?: string) {
+  const res = await fetch(`${apiBaseUrl}/movies/genre/${id}`);
   return getVideoListResults(res);
 }
 
@@ -48,12 +57,12 @@ export async function getSeries() {
 
 export async function getMovieDetails(id: string) {
   const res = await fetch(`${apiBaseUrl}/movies/details/${id}`);
-  return (await res.json()) as MovieDetails;
+  return getVideoDetail(res);
 }
 
 export async function getTvShowDetails(id: string) {
   const res = await fetch(`${apiBaseUrl}/tv/details/${id}`);
-  return (await res.json()) as TvShowDetails;
+  return getVideoDetail(res);
 }
 
 export async function getMovieImages(id: string) {

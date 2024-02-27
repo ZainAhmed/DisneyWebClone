@@ -5,8 +5,8 @@ import {
   VideoImages,
 } from "@/Types/ComponentTypes";
 import LoadingSpinner from "@/components/LoadingSpinner";
-import useMovieData from "@/hooks/useMovieData";
-import useTvData from "@/hooks/useTvData";
+import useMovieDetails from "@/hooks/useMovieDetails";
+import useTvDetails from "@/hooks/useTvDetails";
 import getImagePath from "@/lib/getImagePath";
 import Image from "next/image";
 import { Suspense } from "react";
@@ -16,8 +16,8 @@ type PageProps = {
   id: string;
 };
 function VideoDetailsComponent({ videoType, id }: PageProps) {
-  const movieData = useMovieData(id, videoType);
-  const tvData = useTvData(id, videoType);
+  const movieData = useMovieDetails(id, videoType);
+  const tvData = useTvDetails(id, videoType);
 
   const tvDetail = tvData[0]?.data as TvShowDetails;
   const tvImages = tvData[1]?.data as VideoImages;

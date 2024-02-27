@@ -8,7 +8,7 @@ const tvDetailEndpoints = (id: string) => {
   ];
 };
 
-const useTvData = (id: string, videoType: string) => {
+const useTvDetails = (id: string, videoType: string) => {
   return useSuspenseQueries({
     queries: tvDetailEndpoints(id).map((tvData) => {
       return {
@@ -20,4 +20,4 @@ const useTvData = (id: string, videoType: string) => {
   });
 };
 
-export default useTvData;
+export default useTvDetails;

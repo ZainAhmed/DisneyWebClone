@@ -1,5 +1,5 @@
 import VerticalCarousel from "@/components/VerticalCarousel";
-import { getDiscoverMovies } from "@/lib/api";
+import { getDiscoverbyGeneres } from "@/lib/api";
 
 type PropsType = {
   params: {
@@ -13,7 +13,7 @@ async function GenrePage({ params, searchParams }: PropsType) {
   const { id } = params;
   const { genre } = searchParams;
 
-  const movies = await getDiscoverMovies(id);
+  const movies = await getDiscoverbyGeneres(id);
   return (
     <div className="max-w-7xl mx-auto">
       <div className="flex flex-col space-y-5 mt-32 xl:mt-42">
