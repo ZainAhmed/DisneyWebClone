@@ -2,6 +2,7 @@
 import useVideos from "@/hooks/useVideos";
 import { capitalizeFirstLetter } from "@/lib/utils";
 import { Suspense } from "react";
+import ErrorComponent from "../ErrorComponent";
 import LoadingSpinner from "../LoadingSpinner";
 import VerticalCarousel from "../VerticalCarousel";
 
@@ -23,7 +24,7 @@ function VideoTypeComponent({ videoType, types }: PageProps) {
           </div>
         </div>
       )}
-      {result?.error && <div> {result?.error.message}</div>}
+      {result?.error && <ErrorComponent errorMsg={result?.error.message} />}
     </Suspense>
   );
 }

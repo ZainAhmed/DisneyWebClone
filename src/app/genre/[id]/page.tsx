@@ -1,5 +1,10 @@
-import VerticalCarousel from "@/components/VerticalCarousel";
+import GenreComponent from "@/components/GenreComponent/GenreComponent";
 import { getDiscoverbyGeneres } from "@/lib/api";
+import {
+  HydrationBoundary,
+  QueryClient,
+  dehydrate,
+} from "@tanstack/react-query";
 
 type PropsType = {
   params: {
@@ -12,15 +17,15 @@ type PropsType = {
 async function GenrePage({ params, searchParams }: PropsType) {
   const { id } = params;
   const { genre } = searchParams;
-
-  const movies = await getDiscoverbyGeneres(id);
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ["genre", params.id],
+    queryFn: async () => await getDiscoverbyGeneres(id),
+  });
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="flex flex-col space-y-5 mt-32 xl:mt-42">
-        <h1 className="text-6xl font-bold px-10">Results for {genre}</h1>
-        <VerticalCarousel title="Genre" movies={movies} videoType="movie" />
-      </div>
-    </div>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <GenreComponent id={id} genre={genre} />
+    </HydrationBoundary>
   );
 }
 
