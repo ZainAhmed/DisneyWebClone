@@ -4,12 +4,12 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 
 const useVideos = (input: string) => {
   const originals = useSuspenseQuery({
-    queryKey: ["Disney"],
+    queryKey: ["searchMovies", "Disney"],
     queryFn: async () =>
       input === "originals" && (await getSearchedMovies("disney")),
   });
   const movies = useSuspenseQuery({
-    queryKey: ["Discover"],
+    queryKey: ["discoverMovies"],
     queryFn: async () => input === "movies" && (await getDiscoverMovies()),
   });
   const series = useSuspenseQuery({

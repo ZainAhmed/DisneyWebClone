@@ -22,14 +22,14 @@ async function TypePage({ params }: PageProps) {
   switch (types) {
     case "originals":
       await queryClient.prefetchQuery({
-        queryKey: ["Disney"],
+        queryKey: ["searchMovies", "Disney"],
         queryFn: async () => await getSearchedMovies("disney"),
       });
       videoType = "movie";
       break;
     case "movies":
       await queryClient.prefetchQuery({
-        queryKey: ["Discover"],
+        queryKey: ["discoverMovies"],
         queryFn: () => getDiscoverMovies(),
       });
       videoType = "movie";
