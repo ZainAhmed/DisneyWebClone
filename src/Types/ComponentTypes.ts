@@ -195,7 +195,7 @@ export type TvShowDetails = {
   vote_count: number;
 };
 
-type ImagesDetails = {
+export type ImagesDetails = {
   aspect_ratio: number;
   height: number;
   iso_639_1: string;

@@ -17,7 +17,7 @@ const useHomePageMovies = () => {
   return useSuspenseQueries({
     queries: homePageEndpoints.map((data) => ({
       queryKey: data.key,
-      queryFn: () => data.func(),
+      queryFn: async () => await data.func(),
     })),
   });
 };

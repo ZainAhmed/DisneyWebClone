@@ -6,23 +6,24 @@
   "debug.internalConsoleOptions": "neverOpen",
   "azureFunctions.projectLanguageModel": 4,
   "azureFunctions.preDeployTask": "npm prune (functions)",
-  
+
   "[javascript]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },"tailwindCSS.includeLanguages": {
+  },
+  "tailwindCSS.includeLanguages": {
     "html": "html",
     "javascript": "javascript",
     "css": "css"
-},
-"editor.quickSuggestions": {
+  },
+  "editor.quickSuggestions": {
     "strings": true
-},
+  },
   "[javascriptreact]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -31,13 +32,13 @@
   },
   "[typescript]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -46,18 +47,13 @@
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "editor.guides.bracketPairs": "active",
-    "[html]": {
-        "editor.defaultFormatter": "vscode.html-language-features"
-    },
-  "cSpell.words": [
-    "Autocompelte",
-    "Keycloak",
-    "neighbours"
-  ],
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "cSpell.words": ["Autocompelte", "Keycloak", "neighbours"],
   "[javascript][javascriptreact][typescript][typescriptreact]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit"
     }
   }
-  
 }

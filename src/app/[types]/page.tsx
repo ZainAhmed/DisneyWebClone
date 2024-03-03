@@ -23,7 +23,7 @@ async function TypePage({ params }: PageProps) {
     case "originals":
       await queryClient.prefetchQuery({
         queryKey: ["searchMovies", "Disney"],
-        queryFn: async () => await getSearchedMovies("disney"),
+        queryFn: () => getSearchedMovies("disney"),
       });
       videoType = "movie";
       break;
@@ -37,7 +37,7 @@ async function TypePage({ params }: PageProps) {
     case "series":
       await queryClient.prefetchQuery({
         queryKey: ["Series"],
-        queryFn: () => getSeries(),
+        queryFn: getSeries,
       });
       videoType = "tv";
       break;

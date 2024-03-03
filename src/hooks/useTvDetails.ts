@@ -14,7 +14,7 @@ const useTvDetails = (id: string, videoType: string) => {
       return {
         queryKey: tvData.key,
         queryFn: async () => await tvData.func(id),
-        enabled: videoType == "tv",
+        enabled: videoType === "tv",
       };
     }),
   });

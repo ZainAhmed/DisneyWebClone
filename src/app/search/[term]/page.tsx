@@ -23,11 +23,11 @@ async function SearchPage({ params }: PropsType) {
 
   await queryClient.prefetchQuery({
     queryKey: ["popularMovies"],
-    queryFn: async () => await getPopularMovies(),
+    queryFn: () => getPopularMovies(),
   });
   await queryClient.prefetchQuery({
     queryKey: ["searchMovies", termToUse],
-    queryFn: async () => await getSearchedMovies(termToUse),
+    queryFn: () => getSearchedMovies(termToUse),
   });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

@@ -20,7 +20,7 @@ async function GenrePage({ params, searchParams }: PropsType) {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
     queryKey: ["genre", params.id],
-    queryFn: async () => await getDiscoverbyGeneres(id),
+    queryFn: () => getDiscoverbyGeneres(id),
   });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
