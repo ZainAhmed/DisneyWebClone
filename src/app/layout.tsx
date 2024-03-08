@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import Header from "@/components/Header/Header";
 import ReactQueryProvider from "@/components/Providers/ReactQueryProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import type { Metadata } from "next";

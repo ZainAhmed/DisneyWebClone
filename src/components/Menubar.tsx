@@ -1,9 +1,12 @@
 import { navMenus } from "@/lib/getNavMenu";
 import Image from "next/image";
 
-function Menubar() {
+type PropsType = {
+  styles: string;
+};
+function Menubar(props: PropsType) {
   return (
-    <div className="flex items-center justify-end flex-nowrap m-0 p-0 relative mr-auto ml-[25px]">
+    <div className={props.styles}>
       {navMenus.map((navMenu, index) => (
         <a
           className="flex items-center py-0 px-3 "

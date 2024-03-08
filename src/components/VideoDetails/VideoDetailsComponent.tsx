@@ -64,7 +64,6 @@ function VideoDetailsComponent({ videoType, id }: PageProps) {
       const movieBackdropImgArray = filterByLang(movieImages.backdrops, null);
 
       logo = movieLogoArray.length > 0 && movieLogoArray[0].file_path;
-      console.log({ logo, movieLogoArray });
       backdropImg =
         movieBackdropImgArray.length > 0 && movieBackdropImgArray[0].file_path;
       subtitle = createMovieSubtitle(movieDetail);
@@ -103,20 +102,18 @@ function VideoDetailsComponent({ videoType, id }: PageProps) {
         </div>
 
         {/* ImageTitle */}
-        <div className="flex w-full items-end justify-start my-0 mx-auto h-[30vw] min-h-[170px] pb-[24px] ml-20">
+        <div className="flex w-full items-end justify-start my-0 mx-auto h-[30vw] min-h-[170px] pb-[24px] ml-20 max-md:ml-5">
           {logo && (
-            <Image
+            <img
               src={getImagePath(logo, true)}
               alt=""
-              width={600}
-              height={500}
-              className="z-10 min-w-[200px] max-w-[600px]"
+              className="z-10 w-[50vw] max-w-[600px] "
             />
           )}
         </div>
 
         {/* ContentMeta */}
-        <div className="max-w-[874px] ml-20">
+        <div className="max-w-[874px] ml-20 max-md:ml-5">
           {/* Controls */}
           <div className="flex items-center flex-nowrap flex-row min-h-[56px] my-[24px] mx-0">
             {/* Player */}
