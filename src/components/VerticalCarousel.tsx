@@ -12,7 +12,6 @@ function VerticalCarousel({ movies, title, videoType }: PropsType) {
     <div className="z-10">
       <div className="flex space-x-4 overflow-scroll px-5 lg:px-10 py-5 scrollbar-hide flex-col space-x-0 space-y-12">
         <h2 className="text-xl font-bold px-10 py-2">{title}</h2>
-
         {movies.map((movie) => {
           return (
             (movie.backdrop_path || movie.poster_path) && (
