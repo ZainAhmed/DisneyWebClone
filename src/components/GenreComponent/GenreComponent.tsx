@@ -1,3 +1,4 @@
+"use client";
 import VerticalCarousel from "@/components/VerticalCarousel";
 import { getDiscoverbyGeneres } from "@/lib/api";
 import { useSuspenseQuery } from "@tanstack/react-query";
@@ -10,10 +11,17 @@ type PropsType = {
   genre?: string;
 };
 function GenreComponent({ id, genre }: PropsType) {
-  const { data: movies, error } = useSuspenseQuery({
+  const {
+    data: movies,
+    error,
+    isLoading,
+  } = useSuspenseQuery({
     queryKey: ["genre", id],
     queryFn: async () => await getDiscoverbyGeneres(),
   });
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
   return (
     <Suspense fallback={<LoadingSpinner />}>
       {!error ? (
