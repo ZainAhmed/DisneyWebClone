@@ -21,7 +21,7 @@ function CarouselBanner({ movies }: PropsType) {
       ref={emblaRef}
     >
       <div className="flex">
-        {movies.map((movie) => (
+        {movies?.map((movie) => (
           <div
             key={movie.id}
             className="flex-[0_0_95%] min-w-0 relative hover:border-4 border-white"

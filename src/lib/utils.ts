@@ -1,4 +1,5 @@
 import { Movie, TvShow } from "@/Types/ComponentTypes";
+import { UseSuspenseQueryResult } from "@tanstack/react-query";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -55,3 +56,19 @@ export async function fetchFromTMDB(url: URL, isSearchParams: boolean) {
   const data = await fetch(url, options);
   return await data.json();
 }
+
+export const getUseQueriesResponses = (
+  results: UseSuspenseQueryResult<any>[]
+) => {
+  let isLoading = false;
+  let error = "";
+  results.forEach((res) => {
+    if (res.isLoading) {
+      isLoading = true;
+    }
+    if (res.error) {
+      error += res.error + ". ";
+    }
+  });
+  return { isLoading: isLoading, error: error };
+};

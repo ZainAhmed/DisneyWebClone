@@ -12,20 +12,28 @@ type PageProps = {
 };
 function VideoTypeComponent({ videoType, types }: PageProps) {
   const result = useVideos(types);
+  if (result?.isLoading) {
+    return <LoadingSpinner />;
+  }
   return (
-    <Suspense fallback={<LoadingSpinner />}>
-      {result?.data && videoType && (
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col space-y-4 mt-32 xl:mt-42">
-            <h1 className="text-6xl font-bold px-10">
-              {capitalizeFirstLetter(types)}
-            </h1>
-            <VerticalCarousel movies={result.data} videoType={videoType} />
-          </div>
-        </div>
+    <>
+      {result?.error ? (
+        <ErrorComponent errorMsg={result?.error.message} />
+      ) : (
+        <Suspense fallback={<LoadingSpinner />}>
+          {result?.data && videoType && (
+            <div className="max-w-7xl mx-auto">
+              <div className="flex flex-col space-y-4 mt-32 xl:mt-42">
+                <h1 className="text-6xl font-bold px-10">
+                  {capitalizeFirstLetter(types)}
+                </h1>
+                <VerticalCarousel movies={result.data} videoType={videoType} />
+              </div>
+            </div>
+          )}
+        </Suspense>
       )}
-      {result?.error && <ErrorComponent errorMsg={result?.error.message} />}
-    </Suspense>
+    </>
   );
 }
 

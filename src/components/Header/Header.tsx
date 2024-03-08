@@ -1,4 +1,4 @@
-import GenreDropdown from "../GenreDropdown";
+import GenreDropDown from "../GenreDropDownComponent/GenreDropDown";
 import Logo from "../Logo";
 import Menubar from "../Menubar";
 import MobileNavbar from "../MobileNavbar";
@@ -19,7 +19,7 @@ async function Header() {
         </div>
         <MobileNavbar />
         <div className="flex space-x-2 items-center">
-          <GenreDropdown />
+          <GenreDropDown />
           <SearchInput />
           <ThemeToggler />
         </div>
