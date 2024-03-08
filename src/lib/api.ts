@@ -1,4 +1,5 @@
 import {
+  Genres,
   MovieDetails,
   SearchResults,
   TvShowDetails,
@@ -73,4 +74,10 @@ export async function getMovieImages(id: string) {
 export async function getTvImages(id: string) {
   const res = await fetch(`${apiBaseUrl}/tv/Images/${id}`);
   return getVideoImageDetail(res);
+}
+
+export async function getGenres() {
+  const res = await fetch(`${apiBaseUrl}/genres`);
+  const response = (await res.json()) as Genres;
+  return response;
 }
