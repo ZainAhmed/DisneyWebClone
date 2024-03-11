@@ -10,7 +10,7 @@ type PropsType = {
 };
 function MovieCard({ video, videoType }: PropsType) {
   return (
-    <Link href={`/details/${videoType}/${video.id}`} className="min-w-[200px]">
+    <Link href={`/details/${videoType}/${video.id}`}>
       <div className="flex-shrink-0 relative cursor-pointer transform hover:scale-105 transition duration-200 ease-out hover:drop-shadow-lg">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-200/0 via-gray-900/10 to-gray-300 dark:to-[#1A1C29]/80 z-10" />
         <p className="absolute z-20 bottom-5 left-5">
@@ -18,7 +18,7 @@ function MovieCard({ video, videoType }: PropsType) {
         </p>
         {(video.backdrop_path || video.poster_path) && (
           <Image
-            className="w-fit lg:min-w-[400px] h-56 object-cover object-center shadow-md shadow-gray-900 drop-shadow-xl
+            className="w-fit min-w-[200px] lg:min-w-[400px] h-56 object-cover object-center shadow-md shadow-gray-900 drop-shadow-xl
            rounded-sm"
             src={getImagePath(video.backdrop_path || video.poster_path)}
             alt={video.title || "default"}

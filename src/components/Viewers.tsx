@@ -17,7 +17,7 @@ function Viewers() {
       <div ref={emblaRef}>
         <div className={styles.customContainer}>
           {viewers.map((viewer, index) => (
-            <Link href={viewer.href} key={index}>
+            <Link className={styles.link} href={viewer.href} key={index}>
               <div className={styles.customWrapper}>
                 <Image
                   src={viewer.imgSrc}
