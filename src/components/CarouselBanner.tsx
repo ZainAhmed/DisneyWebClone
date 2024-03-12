@@ -49,7 +49,7 @@ function CarouselBanner({ movies }: PropsType) {
       </div>
       <div
         className="absolute inset-0 bg-grdient-to-b from-gray-200/0
-       via-gray-900/25 to-gray-300 dark:to-[#1A1C29]"
+       via-gray-900/25 to-[#1A1C29]"
       />
     </div>
   );

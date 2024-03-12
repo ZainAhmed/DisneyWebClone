@@ -9,15 +9,15 @@ function Logo() {
         alt="Disney Logo"
         width={120}
         height={100}
-        className="cursor-pointer hidden dark:block"
+        className="cursor-pointer block"
       />
-      <Image
+      {/* <Image
         src="/images/logoDark.svg"
         alt="Disney Logo"
         width={120}
         height={100}
         className="cursor-pointer dark:hidden"
-      />
+      /> */}
     </Link>
   );
 }

@@ -18,7 +18,7 @@ function Menubar(props: PropsType) {
             alt={navMenu.title}
             width={20}
             height={20}
-            className="h-5 w-5 invert dark:invert-0 mb-1 mr-0.5"
+            className="h-5 w-5 invert-0 mb-1 mr-0.5"
           />
           <span
             className="whitespace-nowrap relative text-[13px] 
