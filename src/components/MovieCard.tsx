@@ -13,7 +13,7 @@ function MovieCard({ video, videoType }: PropsType) {
     <Link href={`/details/${videoType}/${video.id}`}>
       <div className="flex-shrink-0 relative cursor-pointer transform hover:scale-105 transition duration-200 ease-out hover:drop-shadow-lg">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-200/0 via-gray-900/10 to-[#1A1C29]/80 z-10" />
-        <p className="absolute z-20 bottom-5 left-5">
+        <p className="absolute z-20 bottom-5 left-5 text-white">
           {isTvShow(video) ? video.name : video.title}
         </p>
         {(video.backdrop_path || video.poster_path) && (
