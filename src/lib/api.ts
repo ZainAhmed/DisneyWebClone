@@ -6,19 +6,26 @@ import {
   VideoImages,
 } from "@/Types/ComponentTypes";
 
-const apiBaseUrl = "http://localhost:3000/apis";
+const apiBaseUrl = `${process.env.PUBLIC_DOMAIN}/apis`;
+
+async function handleResponse(response: Response) {
+  if (!response.ok) {
+    throw new Error(`Request failed with status ${response.status}`);
+  }
+  return response.json();
+}
 
 async function getVideoListResults(response: Response) {
-  const data = (await response.json()) as SearchResults;
+  const data = (await handleResponse(response)) as SearchResults;
   return data.results;
 }
 
 async function getVideoDetail(response: Response) {
-  return (await response.json()) as TvShowDetails | MovieDetails;
+  return (await handleResponse(response)) as TvShowDetails | MovieDetails;
 }
 
 async function getVideoImageDetail(response: Response) {
-  return (await response.json()) as VideoImages;
+  return (await handleResponse(response)) as VideoImages;
 }
 
 export async function getUpComingMovies() {
@@ -36,7 +43,7 @@ export async function getPopularMovies() {
   return getVideoListResults(res);
 }
 
-export async function getDiscoverMovies(id?: string, keywords?: string) {
+export async function getDiscoverMovies() {
   const res = await fetch(`${apiBaseUrl}/movies/discover`);
   return getVideoListResults(res);
 }
