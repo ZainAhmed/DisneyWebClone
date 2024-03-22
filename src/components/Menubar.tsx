@@ -21,7 +21,7 @@ function Menubar(props: PropsType) {
             className="h-5 w-5 invert-0 mb-1 mr-0.5"
           />
           <span
-            className="whitespace-nowrap relative text-[13px] 
+            className="text-white whitespace-nowrap relative text-[13px] 
               tracking-[1.42px] px-0 py-[2px] before:w-0 
               before:h-1 before:absolute before:bottom-0 
               before:right-0 before:bg-white before:transition-all 
