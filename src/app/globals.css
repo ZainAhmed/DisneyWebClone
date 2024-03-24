@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  p,
+  h1,
+  h2 {
+    color: white;
+  }
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;

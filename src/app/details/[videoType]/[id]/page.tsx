@@ -1,3 +1,4 @@
+import LoadingSpinner from "@/components/LoadingSpinner";
 import VideoDetailsComponent from "@/components/VideoDetails/VideoDetailsComponent";
 import {
   getMovieDetails,
@@ -10,6 +11,7 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
+import { Suspense } from "react";
 
 type PageProps = {
   params: {
@@ -46,9 +48,11 @@ async function DetailsPage({ params }: PageProps) {
       break;
   }
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <VideoDetailsComponent id={id} videoType={videoType} />
-    </HydrationBoundary>
+    <Suspense fallback={<LoadingSpinner />}>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <VideoDetailsComponent id={id} videoType={videoType} />
+      </HydrationBoundary>
+    </Suspense>
   );
 }
 

@@ -1,3 +1,4 @@
+import LoadingSpinner from "@/components/LoadingSpinner";
 import VideoTypeComponent from "@/components/VideoTypeComponent/VideoTypeComponent";
 import { getDiscoverMovies, getSearchedMovies, getSeries } from "@/lib/api";
 import {
@@ -5,6 +6,7 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
+import { Suspense } from "react";
 
 type PageProps = {
   params: {
@@ -46,9 +48,11 @@ async function TypePage({ params }: PageProps) {
   }
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <VideoTypeComponent videoType={videoType} types={types} />
-    </HydrationBoundary>
+    <Suspense fallback={<LoadingSpinner />}>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <VideoTypeComponent videoType={videoType} types={types} />
+      </HydrationBoundary>
+    </Suspense>
   );
 }
 

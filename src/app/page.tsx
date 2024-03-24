@@ -1,4 +1,5 @@
 import HomeComponent from "@/components/HomeComponent/HomeComponent";
+import LoadingSpinner from "@/components/LoadingSpinner";
 import {
   getDiscoverMovies,
   getPopularMovies,
@@ -10,6 +11,7 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
+import { Suspense } from "react";
 
 export default async function Home() {
   const queryClient = new QueryClient();
@@ -32,9 +34,11 @@ export default async function Home() {
 
   return (
     <main className="">
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <HomeComponent />
-      </HydrationBoundary>
+      <Suspense fallback={<LoadingSpinner />}>
+        <HydrationBoundary state={dehydrate(queryClient)}>
+          <HomeComponent />
+        </HydrationBoundary>
+      </Suspense>
     </main>
   );
 }

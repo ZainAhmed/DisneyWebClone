@@ -1,10 +1,12 @@
 import GenreComponent from "@/components/GenreComponent/GenreComponent";
+import LoadingSpinner from "@/components/LoadingSpinner";
 import { getDiscoverbyGeneres } from "@/lib/api";
 import {
   HydrationBoundary,
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
+import { Suspense } from "react";
 
 type PropsType = {
   params: {
@@ -23,9 +25,11 @@ async function GenrePage({ params, searchParams }: PropsType) {
     queryFn: () => getDiscoverbyGeneres(id),
   });
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <GenreComponent id={id} genre={genre} />
-    </HydrationBoundary>
+    <Suspense fallback={<LoadingSpinner />}>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <GenreComponent id={id} genre={genre} />
+      </HydrationBoundary>
+    </Suspense>
   );
 }
 

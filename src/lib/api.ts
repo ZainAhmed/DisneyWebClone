@@ -6,7 +6,14 @@ import {
   VideoImages,
 } from "@/Types/ComponentTypes";
 
-const apiBaseUrl = `${process.env.PUBLIC_DOMAIN}/apis`;
+function getUrl(input: string) {
+  if (typeof window !== "undefined") {
+    return `${window.location.origin}/api${input}`;
+  } else {
+    // Handle server-side case
+    return `${process.env.PUBLIC_DOMAIN}/api${input}`;
+  }
+}
 
 async function handleResponse(response: Response) {
   if (!response.ok) {
@@ -29,62 +36,74 @@ async function getVideoImageDetail(response: Response) {
 }
 
 export async function getUpComingMovies() {
-  const res = await fetch(`${apiBaseUrl}/movies/upcoming`);
+  const url = getUrl(`/movies/upcoming`);
+  const res = await fetch(url);
   return getVideoListResults(res);
 }
 
 export async function getTopRatedMovies() {
-  const res = await fetch(`${apiBaseUrl}/movies/top_rated`);
+  const url = getUrl(`/movies/top_rated`);
+  const res = await fetch(url);
   return getVideoListResults(res);
 }
 
 export async function getPopularMovies() {
-  const res = await fetch(`${apiBaseUrl}/movies/popular`);
+  const url = getUrl(`/movies/popular`);
+  const res = await fetch(url);
   return getVideoListResults(res);
 }
 
 export async function getDiscoverMovies() {
-  const res = await fetch(`${apiBaseUrl}/movies/discover`);
+  const url = getUrl(`/movies/discover`);
+  const res = await fetch(url);
   return getVideoListResults(res);
 }
 
 export async function getDiscoverbyGeneres(id?: string) {
-  const res = await fetch(`${apiBaseUrl}/movies/genre/${id}`);
+  const url = getUrl(`/movies/genre/${id}`);
+  const res = await fetch(url);
   return getVideoListResults(res);
 }
 
 export async function getSearchedMovies(term: string) {
-  const res = await fetch(`${apiBaseUrl}/movies/search/${term}`);
+  const url = getUrl(`/movies/search/${term}`);
+  const res = await fetch(url);
   return getVideoListResults(res);
 }
 
 export async function getSeries() {
-  const res = await fetch(`${apiBaseUrl}/tv/discover`);
+  const url = getUrl(`/tv/discover`);
+  const res = await fetch(url);
   return getVideoListResults(res);
 }
 
 export async function getMovieDetails(id: string) {
-  const res = await fetch(`${apiBaseUrl}/movies/details/${id}`);
+  const url = getUrl(`/movies/details/${id}`);
+  const res = await fetch(url);
   return getVideoDetail(res);
 }
 
 export async function getTvShowDetails(id: string) {
-  const res = await fetch(`${apiBaseUrl}/tv/details/${id}`);
+  const url = getUrl(`/tv/details/${id}`);
+  const res = await fetch(url);
   return getVideoDetail(res);
 }
 
 export async function getMovieImages(id: string) {
-  const res = await fetch(`${apiBaseUrl}/movies/Images/${id}`);
+  const url = getUrl(`/movies/Images/${id}`);
+  const res = await fetch(url);
   return getVideoImageDetail(res);
 }
 
 export async function getTvImages(id: string) {
-  const res = await fetch(`${apiBaseUrl}/tv/Images/${id}`);
+  const url = getUrl(`/tv/Images/${id}`);
+  const res = await fetch(url);
   return getVideoImageDetail(res);
 }
 
 export async function getGenres() {
-  const res = await fetch(`${apiBaseUrl}/genres`);
+  const url = getUrl(`/genres`);
+  const res = await fetch(url);
   const response = (await res.json()) as Genres;
   return response;
 }

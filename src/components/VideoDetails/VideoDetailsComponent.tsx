@@ -180,11 +180,11 @@ function VideoDetailsComponent({ videoType, id }: PageProps) {
                 </div>
               </div>
               {/* SubTitle */}
-              <div className="text-[rgb(249, 249, 249)] text-[15px] min-h-[20px] max-md:text-xs">
+              <div className=" text-white text-[rgb(249, 249, 249)] text-[15px] min-h-[20px] max-md:text-xs">
                 {subtitle}
               </div>
               {/* Description */}
-              <div className="text-[rgb(249, 249, 249)] py-[16px] px-0 text-xl leading-6 max-md:text-sm">
+              <div className="text-white text-[rgb(249, 249, 249)] py-[16px] px-0 text-xl leading-6 max-md:text-sm">
                 {overview}
               </div>
             </div>

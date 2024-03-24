@@ -34,7 +34,7 @@ function GenreDropdownComponent() {
             Genre
             <ChevronDown className="ml-1" />
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent className="text-white bg-[#040714] border-[#040714]">
             <DropdownMenuLabel>Select a Genre</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <Suspense fallback={<LoadingSpinner />}>

@@ -1,3 +1,4 @@
+import LoadingSpinner from "@/components/LoadingSpinner";
 import SearchComponent from "@/components/SearchComponent/SearchComponent";
 import { getPopularMovies, getSearchedMovies } from "@/lib/api";
 import {
@@ -5,7 +6,7 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import React from "react";
+import React, { Suspense } from "react";
 type PropsType = {
   params: {
     term: string;
@@ -30,9 +31,11 @@ async function SearchPage({ params }: PropsType) {
     queryFn: () => getSearchedMovies(termToUse),
   });
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <SearchComponent termToUse={termToUse} />
-    </HydrationBoundary>
+    <Suspense fallback={<LoadingSpinner />}>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <SearchComponent termToUse={termToUse} />
+      </HydrationBoundary>
+    </Suspense>
   );
 }
 

@@ -1,6 +1,5 @@
 import Header from "@/components/Header/Header";
 import ReactQueryProvider from "@/components/Providers/ReactQueryProvider";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -20,17 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-[#040714] -z-1">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ReactQueryProvider>
-            <Header />
-            {children}
-          </ReactQueryProvider>
-        </ThemeProvider>
+        <ReactQueryProvider>
+          <Header />
+          {children}
+        </ReactQueryProvider>
       </body>
     </html>
   );
