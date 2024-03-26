@@ -2,7 +2,7 @@
 
 import ErrorComponent from "@/components/ErrorComponent";
 
-function error() {
+function ErrorBoundary() {
   return (
     <div>
       <ErrorComponent errorMsg="error" />
@@ -10,4 +10,4 @@ function error() {
   );
 }
 
-export default error;
+export default ErrorBoundary;

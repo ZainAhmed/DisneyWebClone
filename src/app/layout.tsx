@@ -11,14 +11,14 @@ export const metadata: Metadata = {
   description: "Sample Project",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body className="bg-[#040714] -z-1">
+      <body className="bg-[rgb(4,7,20)] -z-1">
         <ReactQueryProvider>
           <Header />
           {children}

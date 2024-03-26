@@ -1,9 +1,8 @@
-import GenreDropDown from "../GenreDropDownComponent/GenreDropDown";
+import GenreDropdownComponent from "../GenreDropDownComponent/GenreDropdownComponent";
 import Logo from "../Logo";
 import Menubar from "../Menubar";
 import MobileNavbar from "../MobileNavbar";
 import SearchInput from "../SearchInput";
-
 async function Header() {
   return (
     <>
@@ -17,7 +16,7 @@ async function Header() {
         </div>
         <MobileNavbar />
         <div className="flex space-x-2 items-center">
-          <GenreDropDown />
+          <GenreDropdownComponent />
           <SearchInput />
         </div>
       </header>

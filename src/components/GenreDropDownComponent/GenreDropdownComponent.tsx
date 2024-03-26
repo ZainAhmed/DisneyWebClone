@@ -8,15 +8,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { getGenres } from "@/lib/api";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 import ErrorComponent from "../ErrorComponent";
 import LoadingSpinner from "../LoadingSpinner";
 
-function GenreDropdownComponent() {
-  const { data, error, isLoading } = useSuspenseQuery({
+const GenreDropdownComponent = () => {
+  const { data, error, isLoading } = useQuery({
     queryKey: ["getGenres"],
     queryFn: async () => await getGenres(),
   });
@@ -51,6 +51,6 @@ function GenreDropdownComponent() {
       )}
     </>
   );
-}
+};
 
 export default GenreDropdownComponent;
