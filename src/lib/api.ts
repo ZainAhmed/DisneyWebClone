@@ -22,7 +22,9 @@ function getUrl(input: string) {
 
 async function fetchData(url: string) {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: { accept: "application/json" },
+    });
     if (!response.ok) {
       throw new Error(
         `Failed to fetch data from ${url}: ${response.status} ${response.statusText}`
