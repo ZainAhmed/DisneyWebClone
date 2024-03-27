@@ -12,6 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
+import { ClipLoader } from "react-spinners";
 import ErrorComponent from "../ErrorComponent";
 import LoadingSpinner from "../LoadingSpinner";
 
@@ -22,12 +23,12 @@ const GenreDropdownComponent = () => {
   });
 
   if (isLoading) {
-    return <LoadingSpinner />;
+    return <ClipLoader loading={true} size={50} color="white" />;
   }
   return (
     <>
       {error ? (
-        <ErrorComponent errorMsg={error.message} />
+        <ErrorComponent errorMsg={error?.message} />
       ) : (
         <DropdownMenu>
           <DropdownMenuTrigger className="text-white flex justify-center items-center">

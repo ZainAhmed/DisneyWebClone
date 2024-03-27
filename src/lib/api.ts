@@ -53,67 +53,78 @@ async function getVideoImageDetail(response: Response) {
 export async function getUpComingMovies() {
   const url = getUrl(`/movies/upcoming`);
   const res = await fetchData(url);
-  return getVideoListResults(res);
+  const output = await getVideoListResults(res);
+  return output;
 }
 
 export async function getTopRatedMovies() {
   const url = getUrl(`/movies/top_rated`);
   const res = await fetchData(url);
-  return getVideoListResults(res);
+  const output = await getVideoListResults(res);
+  return output;
 }
 
 export async function getPopularMovies() {
   const url = getUrl(`/movies/popular`);
   const res = await fetchData(url);
-  return getVideoListResults(res);
+  const output = await getVideoListResults(res);
+  return output;
 }
 
 export async function getDiscoverMovies() {
   const url = getUrl(`/movies/discover`);
   const res = await fetchData(url);
-  return getVideoListResults(res);
+  const output = await getVideoListResults(res);
+  return output;
 }
 
 export async function getDiscoverbyGeneres(id?: string) {
   const url = getUrl(`/movies/genre/${id}`);
   const res = await fetchData(url);
-  return getVideoListResults(res);
+  const output = await getVideoListResults(res);
+  return output;
 }
 
 export async function getSearchedMovies(term: string) {
   const url = getUrl(`/movies/search/${term}`);
   const res = await fetchData(url);
-  return getVideoListResults(res);
+  const output = await getVideoListResults(res);
+  return output;
 }
 
 export async function getSeries() {
   const url = getUrl(`/tv/discover`);
   const res = await fetchData(url);
-  return getVideoListResults(res);
+  const output = await getVideoListResults(res);
+  return output;
 }
 
 export async function getMovieDetails(id: string) {
   const url = getUrl(`/movies/details/${id}`);
   const res = await fetchData(url);
-  return getVideoDetail(res);
+  const output = getVideoDetail(res);
+  return output;
 }
 
 export async function getTvShowDetails(id: string) {
   const url = getUrl(`/tv/details/${id}`);
   const res = await fetchData(url);
-  return getVideoDetail(res);
+  const output = getVideoDetail(res);
+  return output;
 }
 
 export async function getMovieImages(id: string) {
   const url = getUrl(`/movies/Images/${id}`);
   const res = await fetchData(url);
-  return getVideoImageDetail(res);
+  const output = getVideoImageDetail(res);
+  return output;
 }
 
 export async function getTvImages(id: string) {
   const url = getUrl(`/tv/Images/${id}`);
   const res = await fetchData(url);
-  return getVideoImageDetail(res);
+  const output = getVideoImageDetail(res);
+  return output;
 }
 
 export async function getGenres() {
