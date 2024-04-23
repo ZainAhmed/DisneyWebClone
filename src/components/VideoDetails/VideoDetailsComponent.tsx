@@ -131,7 +131,7 @@ function VideoDetailsComponent({ videoType, id }: PageProps) {
             </div>
 
             {/* ContentMeta */}
-            <div className="max-w-[874px] ml-20 max-md:ml-5">
+            <div className="max-w-[874px] mx-20 max-md:mx-5">
               {/* Controls */}
               <div className="flex items-center flex-nowrap flex-row min-h-[56px] my-[24px] mx-0">
                 {/* Player */}
